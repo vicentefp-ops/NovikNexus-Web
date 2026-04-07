@@ -16,6 +16,7 @@ import {
   Network,
   ChevronRight
 } from 'lucide-react';
+import CookieConsent from './components/CookieConsent';
 
 // --- Global Noise Texture ---
 const NoiseOverlay = () => (
@@ -304,6 +305,7 @@ export default function App() {
       <NoiseOverlay />
       <SVGFilters />
       <FloatingWhatsApp />
+      <CookieConsent />
       
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-[#0A0A0A]/80 backdrop-blur-xl border-b border-white/10 py-4' : 'bg-transparent py-6'}`}>
