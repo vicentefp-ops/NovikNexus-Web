@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use / Términos de Uso — Novik Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:            #0a0808;
+      --surface:       #120d0d;
+      --surface-2:     #1a1212;
+      --border:        #281818;
+      --border-light:  #38201f;
+      --text-primary:  #f0e8e8;
+      --text-secondary:#a08888;
+      --text-muted:    #6a4848;
+      --accent:        #92164f;
+      --accent-bright: #b01d60;
+      --accent-glow:   rgba(146,22,79,0.20);
+      --accent-dim:    rgba(146,22,79,0.10);
+      --highlight:     #d4607a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'DM Serif Display', Georgia, serif;
+      min-height: 100vh;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 52px 52px;
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: -25vh; left: 50%;
+      transform: translateX(-50%);
+      width: 75vw; height: 65vh;
+      background: radial-gradient(ellipse, rgba(146,22,79,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 7rem;
+    }
+
+    /* ── Top accent line ── */
+    .top-line {
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-bright) 55%, transparent 100%);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 300;
+    }
+
+    /* ── Language switcher ── */
+    .lang-bar {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: flex-end;
+      padding: 0.8rem 0;
+      background: linear-gradient(to bottom, var(--bg) 65%, transparent);
+    }
+
+    .lang-toggle {
+      display: flex;
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      overflow: hidden;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+    }
+
+    .lang-btn {
+      padding: 0.38rem 1rem;
+      cursor: pointer;
+      background: var(--surface);
+      color: var(--text-muted);
+      border: none;
+      font-family: inherit;
+      font-size: inherit;
+      letter-spacing: inherit;
+      text-transform: uppercase;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .lang-btn.active { background: var(--accent); color: #fff; }
+    .lang-btn:hover:not(.active) { background: var(--surface-2); color: var(--text-secondary); }
+
+    /* ── Language visibility ── */
+    .es, .en { display: none; }
+    html[lang="en"] .en { display: revert; }
+    html[lang="es"] .es { display: revert; }
+    html[lang="en"] .en.b { display: block; }
+    html[lang="es"] .es.b { display: block; }
+
+    /* ── Header ── */
+    header {
+      padding: 3rem 0 2.8rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .logo-img { height: 46px; width: auto; display: block; }
+
+    .logo-sep {
+      margin-left: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.63rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 0.9rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      font-family: 'DM Serif Display', serif;
+      color: var(--highlight);
+    }
+
+    .meta-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
+
+    .badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      padding: 0.26rem 0.65rem;
+      border-radius: 4px;
+    }
+
+    .badge b { color: var(--accent-bright); font-weight: 400; }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .toc-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.59rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 2.2rem;
+    }
+
+    @media (max-width: 560px) { .toc ol { grid-template-columns: 1fr; } }
+
+    .toc li { counter-increment: toc; display: flex; gap: 0.55rem; align-items: baseline; }
+
+    .toc li::before {
+      content: counter(toc, decimal-leading-zero);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.59rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .toc a {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+
+    .toc a:hover { color: var(--highlight); }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 3.25rem;
+      scroll-margin-top: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.45s ease forwards;
+    }
+
+    section:nth-child(1)  { animation-delay:.05s }
+    section:nth-child(2)  { animation-delay:.10s }
+    section:nth-child(3)  { animation-delay:.14s }
+    section:nth-child(4)  { animation-delay:.18s }
+    section:nth-child(5)  { animation-delay:.22s }
+    section:nth-child(6)  { animation-delay:.26s }
+    section:nth-child(7)  { animation-delay:.30s }
+    section:nth-child(8)  { animation-delay:.34s }
+    section:nth-child(9)  { animation-delay:.38s }
+    section:nth-child(10) { animation-delay:.42s }
+    section:nth-child(11) { animation-delay:.46s }
+    section:nth-child(12) { animation-delay:.50s }
+    section:nth-child(13) { animation-delay:.54s }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(12px) }
+      to   { opacity:1; transform:translateY(0) }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      margin-bottom: 1.15rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.59rem;
+      color: var(--accent-bright);
+      background: var(--accent-dim);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      padding: 0.2rem 0.48rem;
+      margin-top: 0.32rem;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.08rem;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    p {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.9rem;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul { padding-left: 1.3rem; margin-bottom: 0.9rem; }
+
+    li { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 0.38rem; }
+
+    strong { color: var(--text-primary); font-weight: 600; }
+
+    a { color: var(--highlight); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    em.legal { font-style: italic; }
+
+    /* ── Info box ── */
+    .info-box {
+      background: var(--accent-dim);
+      border: 1px solid var(--border-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 0.95rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    .box-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.57rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--highlight);
+      display: block;
+      margin-bottom: 0.32rem;
+    }
+
+    /* ── Warning box ── */
+    .warn-box {
+      background: rgba(146,22,79,0.07);
+      border: 1px solid rgba(146,22,79,0.28);
+      border-left: 3px solid var(--accent-bright);
+      border-radius: 6px;
+      padding: 0.95rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    .warn-box .box-label { color: var(--accent-bright); }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 1.4rem 1.7rem;
+      margin-top: 1.1rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .contact-row { display: flex; gap: 0.9rem; align-items: baseline; flex-wrap: wrap; }
+
+    .contact-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      min-width: 86px;
+    }
+
+    .contact-val { font-size: 0.89rem; color: var(--text-secondary); }
+
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 3.5rem 0; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .footer-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.59rem;
+      color: var(--text-muted);
+      text-align: right;
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-line"></div>
+
+<div class="wrapper">
+
+  <!-- ── Language switcher ── -->
+  <div class="lang-bar">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn"        id="btn-es" onclick="setLang('es')">ES</button>
+    </div>
+  </div>
+
+  <!-- ══ HEADER ══ -->
+  <header>
+    <div class="logo-row">
+      <img class="logo-img" src="/NNLogo3.png" alt="Novik Nexus" />
+      <span class="logo-sep en">legal / terms-of-use</span>
+      <span class="logo-sep es">legal / términos-de-uso</span>
+    </div>
+
+    <h1 class="en">Terms of <em>Use</em></h1>
+    <h1 class="es">Términos de <em>Uso</em></h1>
+
+    <p class="en" style="color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:0.73rem;margin-top:0.3rem;">SaaS Platform · International scope</p>
+    <p class="es" style="color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:0.73rem;margin-top:0.3rem;">Plataforma SaaS · Ámbito internacional</p>
+
+    <div class="meta-row">
+      <span class="badge en"><b>Version</b> 1.0</span>
+      <span class="badge es"><b>Versión</b> 1.0</span>
+      <span class="badge en"><b>Effective</b> April 7, 2025</span>
+      <span class="badge es"><b>Vigente desde</b> 7 de abril de 2025</span>
+      <span class="badge en"><b>Jurisdiction</b> Spain · GDPR</span>
+      <span class="badge es"><b>Jurisdicción</b> España · RGPD</span>
+    </div>
+  </header>
+
+  <!-- ── Intro notice ── -->
+  <div class="info-box en b">
+    <span class="box-label">Important notice</span>
+    By accessing or using the Novik Nexus platform, you agree to be bound by these Terms of Use. If you do not agree with any of them, please refrain from using the Service.
+  </div>
+  <div class="info-box es b">
+    <span class="box-label">Aviso importante</span>
+    Al acceder o utilizar la plataforma de Novik Nexus, usted acepta quedar vinculado por los presentes Términos de Uso. Si no está de acuerdo con alguno de ellos, le rogamos que se abstenga de utilizar el Servicio.
+  </div>
+
+  <!-- ══ TOC EN ══ -->
+  <nav class="toc en b" aria-label="Table of contents">
+    <p class="toc-label">Table of Contents</p>
+    <ol>
+      <li><a href="#s1">Company identification</a></li>
+      <li><a href="#s2">Purpose and scope</a></li>
+      <li><a href="#s3">Access and registration</a></li>
+      <li><a href="#s4">Licence of use</a></li>
+      <li><a href="#s5">User obligations</a></li>
+      <li><a href="#s6">Plans, pricing and payments</a></li>
+      <li><a href="#s7">Intellectual property</a></li>
+      <li><a href="#s8">Personal data and privacy</a></li>
+      <li><a href="#s9">Limitation of liability</a></li>
+      <li><a href="#s10">Suspension and termination</a></li>
+      <li><a href="#s11">Amendments</a></li>
+      <li><a href="#s12">Governing law and jurisdiction</a></li>
+      <li><a href="#s13">Contact</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══ TOC ES ══ -->
+  <nav class="toc es b" aria-label="Índice">
+    <p class="toc-label">Índice de contenidos</p>
+    <ol>
+      <li><a href="#s1">Identificación del titular</a></li>
+      <li><a href="#s2">Objeto y ámbito</a></li>
+      <li><a href="#s3">Acceso y registro</a></li>
+      <li><a href="#s4">Licencia de uso</a></li>
+      <li><a href="#s5">Obligaciones del usuario</a></li>
+      <li><a href="#s6">Planes, precios y pagos</a></li>
+      <li><a href="#s7">Propiedad intelectual</a></li>
+      <li><a href="#s8">Datos personales y privacidad</a></li>
+      <li><a href="#s9">Limitación de responsabilidad</a></li>
+      <li><a href="#s10">Suspensión y cancelación</a></li>
+      <li><a href="#s11">Modificaciones</a></li>
+      <li><a href="#s12">Ley aplicable y jurisdicción</a></li>
+      <li><a href="#s13">Contacto</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══ S1 ══ -->
+  <section id="s1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="en">Company identification</h2>
+      <h2 class="es">Identificación del titular</h2>
+    </div>
+    <p class="en">In compliance with applicable regulations on information society services, the following identifies the entity responsible for the platform:</p>
+    <p class="es">En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE), se informa al usuario de los datos identificativos del responsable de la plataforma:</p>
+    <div class="contact-card">
+      <div class="contact-row">
+        <span class="contact-label en">Company name</span><span class="contact-label es">Razón social</span>
+        <span class="contact-val">Novik Nexus, S.L.</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label en">VAT No.</span><span class="contact-label es">NIF</span>
+        <span class="contact-val">B24836553</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label en">Address</span><span class="contact-label es">Domicilio</span>
+        <span class="contact-val">C/ De la Cruz, 2 Entlo., 30820 Alcantarilla, Murcia (Spain)</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label en">Phone</span><span class="contact-label es">Teléfono</span>
+        <span class="contact-val"><a href="tel:+34690957910">+34 690 957 910</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <span class="contact-val"><a href="mailto:info@noviknexus.com">info@noviknexus.com</a></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ S2 ══ -->
+  <section id="s2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="en">Purpose and scope</h2>
+      <h2 class="es">Objeto y ámbito de aplicación</h2>
+    </div>
+    <p class="en">These Terms of Use (the <strong>"Terms"</strong>) govern access to and use of the SaaS platform of <strong>Novik Nexus, S.L.</strong> (the <strong>"Platform"</strong> or the <strong>"Service"</strong>), as well as all products, features and content forming part thereof.</p>
+    <p class="en">These Terms apply to any individual or legal entity (the <strong>"User"</strong>) who accesses, registers with or uses the Service, regardless of their geographic location. Access from outside the European Union does not exempt the User from complying with applicable regulations in their jurisdiction.</p>
+    <p class="en">These Terms complement, without replacing, the Novik Nexus <strong>Privacy Policy</strong> and <strong>Cookie Policy</strong>, both of which form an integral part of the contractual framework with the User.</p>
+    <p class="es">Los presentes Términos de Uso (<strong>"Términos"</strong>) regulan el acceso y uso de la plataforma SaaS de <strong>Novik Nexus, S.L.</strong> (<strong>"la Plataforma"</strong> o <strong>"el Servicio"</strong>), así como todos los productos, funcionalidades y contenidos que la componen.</p>
+    <p class="es">Estos Términos son de aplicación a cualquier persona física o jurídica (<strong>"Usuario"</strong>) que acceda, se registre o utilice el Servicio, con independencia de su ubicación geográfica. El acceso desde fuera de la Unión Europea no exime al Usuario del cumplimiento de la normativa aplicable en su jurisdicción.</p>
+    <p class="es">Los presentes Términos complementan, sin reemplazar, la <strong>Política de Privacidad</strong> y la <strong>Política de Cookies</strong> de Novik Nexus, que forman parte integrante del marco contractual con el Usuario.</p>
+  </section>
+
+  <!-- ══ S3 ══ -->
+  <section id="s3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="en">Access and registration</h2>
+      <h2 class="es">Acceso y registro</h2>
+    </div>
+    <p class="en">Access to certain features requires prior registration. By registering, the User represents and warrants that:</p>
+    <ul class="en">
+      <li>They are at least 16 years of age or have the express consent of a legal representative.</li>
+      <li>The information provided is accurate, complete and up to date.</li>
+      <li>They own or are authorised to use the email address provided.</li>
+      <li>If acting on behalf of a legal entity, they have authority to bind that entity contractually.</li>
+    </ul>
+    <p class="en">The User is responsible for maintaining the confidentiality of their credentials and for all activity carried out under their account. Any unauthorised use must be reported immediately to <a href="mailto:info@noviknexus.com">info@noviknexus.com</a>.</p>
+    <div class="warn-box en b">
+      <span class="box-label">Important</span>
+      Novik Nexus shall not be liable for damage arising from unauthorised use of credentials where such use results from the User's failure to exercise due care in their safekeeping.
+    </div>
+    <p class="es">El acceso a determinadas funcionalidades requiere el registro previo. Al registrarse, el Usuario declara y garantiza que:</p>
+    <ul class="es">
+      <li>Es mayor de 16 años o cuenta con el consentimiento expreso de su representante legal.</li>
+      <li>La información proporcionada es veraz, completa y actualizada.</li>
+      <li>Es titular o tiene autorización para usar la dirección de correo electrónico facilitada.</li>
+      <li>Si actúa en nombre de una persona jurídica, cuenta con representación legal suficiente para obligarla contractualmente.</li>
+    </ul>
+    <p class="es">El Usuario es responsable de mantener la confidencialidad de sus credenciales y de todas las actividades realizadas bajo su cuenta. Cualquier uso no autorizado deberá comunicarse de inmediato a <a href="mailto:info@noviknexus.com">info@noviknexus.com</a>.</p>
+    <div class="warn-box es b">
+      <span class="box-label">Importante</span>
+      Novik Nexus no será responsable de los daños derivados del uso no autorizado de credenciales cuando dicho uso sea consecuencia de la falta de diligencia del Usuario en su custodia.
+    </div>
+  </section>
+
+  <!-- ══ S4 ══ -->
+  <section id="s4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="en">Licence of use</h2>
+      <h2 class="es">Licencia de uso</h2>
+    </div>
+    <p class="en">Novik Nexus grants the User a <strong>non-exclusive, non-transferable, revocable and limited</strong> licence to access and use the Service solely for their own internal business or professional purposes. The following are expressly prohibited:</p>
+    <ul class="en">
+      <li>Sublicensing, selling, reselling, transferring or assigning access to the Service to third parties without prior written consent.</li>
+      <li>Reproducing, modifying, creating derivative works, decompiling or reverse engineering any part of the Service.</li>
+      <li>Accessing the Service for the purpose of building a competing product or service.</li>
+      <li>Using the Service to provide services to third parties on a <em class="legal">service bureau</em> basis without a prior written agreement.</li>
+    </ul>
+    <p class="es">Novik Nexus concede al Usuario una licencia <strong>no exclusiva, intransferible, revocable y limitada</strong> para acceder y utilizar el Servicio exclusivamente para sus fines comerciales o profesionales internos. Queda expresamente prohibido:</p>
+    <ul class="es">
+      <li>Sublicenciar, vender, revender, transferir o ceder el acceso al Servicio a terceros sin consentimiento previo y por escrito.</li>
+      <li>Reproducir, modificar, crear obras derivadas, descompilar o realizar ingeniería inversa sobre cualquier parte del Servicio.</li>
+      <li>Acceder al Servicio con el fin de desarrollar un producto o servicio competidor.</li>
+      <li>Utilizar el Servicio para prestar servicios a terceros en modalidad de <em class="legal">service bureau</em> sin acuerdo previo y por escrito.</li>
+    </ul>
+  </section>
+
+  <!-- ══ S5 ══ -->
+  <section id="s5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="en">User obligations</h2>
+      <h2 class="es">Obligaciones del usuario</h2>
+    </div>
+    <p class="en">The User undertakes to use the Service lawfully, ethically and in accordance with these Terms. In particular, the following are prohibited:</p>
+    <ul class="en">
+      <li>Transmitting illegal, defamatory, fraudulent, obscene or third-party rights-infringing content.</li>
+      <li>Introducing viruses, malware or any other malicious code.</li>
+      <li>Attempting unauthorised access to systems, networks or other users' accounts.</li>
+      <li>Taking any action that could degrade or disrupt the Platform (DDoS attacks, mass scraping, API abuse, etc.).</li>
+      <li>Impersonating any individual or legal entity.</li>
+      <li>Violating export control regulations or international sanctions applicable in their jurisdiction.</li>
+    </ul>
+    <p class="en">Breach of these obligations may result in immediate suspension or termination of the account, without prejudice to any applicable legal action.</p>
+    <p class="es">El Usuario se compromete a utilizar el Servicio de forma lícita, ética y de conformidad con los presentes Términos. En particular, queda prohibido:</p>
+    <ul class="es">
+      <li>Transmitir contenidos ilegales, difamatorios, fraudulentos, obscenos o que infrinjan derechos de terceros.</li>
+      <li>Introducir virus, malware ni código malicioso de ningún tipo.</li>
+      <li>Intentar acceder de forma no autorizada a sistemas, redes o cuentas de otros usuarios.</li>
+      <li>Realizar acciones que puedan degradar o interrumpir el funcionamiento de la Plataforma (ataques DDoS, scraping masivo, abuso de API, etc.).</li>
+      <li>Suplantar la identidad de cualquier persona física o jurídica.</li>
+      <li>Incumplir la normativa de control de exportaciones o sanciones internacionales aplicable en su jurisdicción.</li>
+    </ul>
+    <p class="es">El incumplimiento de estas obligaciones podrá dar lugar a la suspensión o cancelación inmediata de la cuenta, sin perjuicio de las acciones legales que pudieran corresponder.</p>
+  </section>
+
+  <!-- ══ S6 ══ -->
+  <section id="s6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="en">Plans, pricing and payments</h2>
+      <h2 class="es">Planes, precios y pagos</h2>
+    </div>
+    <p class="en">The Service is offered under different subscription plans detailed on the Platform's pricing page. The User authorises Novik Nexus, or its designated payment processor, to charge the applicable subscription fee to the payment method provided. Payments are <strong>made in advance and are non-refundable</strong>, except as provided in the termination section or as required by applicable law.</p>
+    <p class="en">Novik Nexus reserves the right to modify its prices with a minimum of <strong>30 calendar days' notice</strong>. If the User does not accept the new pricing, they may cancel before the next renewal date at no additional cost.</p>
+    <div class="info-box en b">
+      <span class="box-label">Taxes</span>
+      Prices do not include applicable indirect taxes (VAT or equivalent) depending on the User's jurisdiction. Such taxes will be added at the time of billing in accordance with applicable law.
+    </div>
+    <p class="en">In the event of non-payment or a failed charge, Novik Nexus may suspend access until the outstanding amount is settled, without prejudice to its right to claim the amounts owed.</p>
+    <p class="es">El Servicio se ofrece bajo distintos planes de suscripción detallados en la página de precios de la Plataforma. El Usuario autoriza a Novik Nexus, o al procesador de pago designado, a cargar el importe correspondiente mediante el método de pago facilitado. Los pagos son <strong>anticipados y no reembolsables</strong>, salvo lo dispuesto en el apartado de cancelación o lo exigido por la normativa aplicable.</p>
+    <p class="es">Novik Nexus se reserva el derecho a modificar los precios con un preaviso mínimo de <strong>30 días naturales</strong>. Si el Usuario no acepta la nueva tarifa, podrá cancelar antes de la próxima fecha de renovación sin coste adicional.</p>
+    <div class="info-box es b">
+      <span class="box-label">Impuestos</span>
+      Los precios no incluyen los impuestos indirectos aplicables (IVA u equivalentes) según la jurisdicción del Usuario. Dichos impuestos se añadirán en la facturación conforme a la normativa vigente.
+    </div>
+    <p class="es">En caso de impago o fallo en el cargo, Novik Nexus podrá suspender el acceso hasta que la deuda quede regularizada, sin perjuicio del derecho a reclamar los importes adeudados.</p>
+  </section>
+
+  <!-- ══ S7 ══ -->
+  <section id="s7">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="en">Intellectual and industrial property</h2>
+      <h2 class="es">Propiedad intelectual e industrial</h2>
+    </div>
+    <p class="en">All intellectual and industrial property rights in the Platform — including its source code, design, logos, trademarks, databases, documentation and content produced by Novik Nexus — are the exclusive property of <strong>Novik Nexus, S.L.</strong> or its licensors. All rights reserved.</p>
+    <p class="en">With respect to content uploaded or generated through the Service (<strong>"User Content"</strong>):</p>
+    <ul class="en">
+      <li>The User retains all intellectual property rights in their User Content.</li>
+      <li>The User grants Novik Nexus a limited, non-exclusive, royalty-free licence to host, reproduce and process that content solely for the purpose of providing the Service.</li>
+      <li>The User represents that their content does not infringe any third-party rights or applicable law, and indemnifies Novik Nexus against any claims arising therefrom.</li>
+    </ul>
+    <p class="es">Todos los derechos de propiedad intelectual e industrial sobre la Plataforma —incluyendo su código fuente, diseño, logotipos, marcas, bases de datos, documentación y contenidos elaborados por Novik Nexus— son titularidad exclusiva de <strong>Novik Nexus, S.L.</strong> o de sus licenciantes. Todos los derechos reservados.</p>
+    <p class="es">Respecto al contenido que el Usuario introduzca o genere a través del Servicio (<strong>"Contenido del Usuario"</strong>):</p>
+    <ul class="es">
+      <li>El Usuario conserva todos sus derechos de propiedad intelectual sobre dicho contenido.</li>
+      <li>El Usuario concede a Novik Nexus una licencia limitada, no exclusiva y libre de royalties para alojar, reproducir y procesar ese contenido con el único fin de prestar el Servicio.</li>
+      <li>El Usuario declara que su contenido no infringe derechos de terceros ni la normativa aplicable, y exonera a Novik Nexus de cualquier reclamación derivada del mismo.</li>
+    </ul>
+  </section>
+
+  <!-- ══ S8 ══ -->
+  <section id="s8">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="en">Personal data and privacy</h2>
+      <h2 class="es">Datos personales y privacidad</h2>
+    </div>
+    <p class="en">The processing of the User's personal data is governed by Novik Nexus's <strong>Privacy Policy</strong> and by Regulation (EU) 2016/679 (GDPR), as well as applicable Spanish data protection legislation.</p>
+    <p class="en">Where the User processes personal data of third parties through the Service, the User shall act as the <strong>data controller</strong> and Novik Nexus as the <strong>data processor</strong>, subject to the applicable Data Processing Agreement (DPA), which may be requested at <a href="mailto:info@noviknexus.com">info@noviknexus.com</a>.</p>
+    <p class="en">For Users located outside the European Economic Area, international data transfers shall be carried out with the appropriate safeguards under the GDPR (standard contractual clauses or other recognised mechanisms), where applicable.</p>
+    <p class="es">El tratamiento de datos personales del Usuario se rige por la <strong>Política de Privacidad</strong> de Novik Nexus y por el Reglamento (UE) 2016/679 (RGPD), así como por la legislación española de protección de datos vigente.</p>
+    <p class="es">Cuando el Usuario trate datos personales de terceros a través del Servicio, actuará como <strong>responsable del tratamiento</strong> y Novik Nexus como <strong>encargado del tratamiento</strong>, resultando de aplicación el correspondiente Acuerdo de Encargo de Tratamiento (DPA), que puede solicitarse en <a href="mailto:info@noviknexus.com">info@noviknexus.com</a>.</p>
+    <p class="es">Para Usuarios situados fuera del Espacio Económico Europeo, las transferencias internacionales de datos se realizarán con las garantías adecuadas previstas en el RGPD (cláusulas contractuales tipo u otros mecanismos reconocidos), cuando resulte aplicable.</p>
+  </section>
+
+  <!-- ══ S9 ══ -->
+  <section id="s9">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2 class="en">Limitation of liability</h2>
+      <h2 class="es">Limitación de responsabilidad</h2>
+    </div>
+    <p class="en">The Service is provided on an <strong>"as is"</strong> and <strong>"as available"</strong> basis. Novik Nexus does not warrant that the Service will be uninterrupted, error-free or fully meet the User's requirements.</p>
+    <p class="en">To the fullest extent permitted by law, Novik Nexus shall not be liable for:</p>
+    <ul class="en">
+      <li>Indirect, incidental, special, consequential or punitive damages of any kind.</li>
+      <li>Loss of profits, revenue, data, goodwill or anticipated savings.</li>
+      <li>Interruptions due to force majeure, scheduled maintenance or third-party attacks.</li>
+      <li>Actions of third-party providers or integrations.</li>
+    </ul>
+    <div class="warn-box en b">
+      <span class="box-label">Maximum liability cap</span>
+      Novik Nexus's total cumulative liability to the User shall in no event exceed the amounts paid by the User during the <strong>three (3) months preceding</strong> the event giving rise to the claim.
+    </div>
+    <p class="en">Some jurisdictions do not allow the exclusion of certain warranties or the limitation of certain types of damages. In such cases, the above limitations shall apply to the fullest extent permitted by local law.</p>
+    <p class="es">El Servicio se presta <strong>"tal cual"</strong> (<em class="legal">as is</em>) y <strong>"según disponibilidad"</strong> (<em class="legal">as available</em>). Novik Nexus no garantiza que el Servicio sea ininterrumpido, libre de errores o que satisfaga plenamente los requisitos del Usuario.</p>
+    <p class="es">En la máxima medida permitida por la ley, Novik Nexus no será responsable por:</p>
+    <ul class="es">
+      <li>Daños indirectos, incidentales, especiales, consecuentes o punitivos de ningún tipo.</li>
+      <li>Pérdida de beneficios, ingresos, datos, fondo de comercio o ahorros esperados.</li>
+      <li>Interrupciones debidas a causas de fuerza mayor, mantenimientos programados o ataques de terceros.</li>
+      <li>Actuaciones de proveedores externos o integraciones de terceros.</li>
+    </ul>
+    <div class="warn-box es b">
+      <span class="box-label">Límite máximo de responsabilidad</span>
+      La responsabilidad total y acumulada de Novik Nexus frente al Usuario no superará, en ningún caso, el importe abonado durante los <strong>tres (3) meses anteriores</strong> al evento que origina la reclamación.
+    </div>
+    <p class="es">Algunas jurisdicciones no permiten la exclusión de ciertas garantías o la limitación de determinados tipos de daños. En tales casos, las limitaciones anteriores se aplicarán en la medida que lo permita la ley local.</p>
+  </section>
+
+  <!-- ══ S10 ══ -->
+  <section id="s10">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2 class="en">Suspension and termination</h2>
+      <h2 class="es">Suspensión y cancelación</h2>
+    </div>
+    <p class="en"><strong>By the User:</strong> The User may cancel their subscription at any time from the administration panel or by contacting <a href="mailto:info@noviknexus.com">info@noviknexus.com</a>. Cancellation takes effect at the end of the current billing period, with no entitlement to a pro-rata refund unless required by applicable law.</p>
+    <p class="en"><strong>By Novik Nexus:</strong> Novik Nexus may suspend or terminate access, with or without notice depending on the severity, in the following circumstances:</p>
+    <ul class="en">
+      <li>Breach of these Terms.</li>
+      <li>Non-payment of subscription fees.</li>
+      <li>Use of the Service for illegal or fraudulent activities.</li>
+      <li>Risk to the security or integrity of the Platform.</li>
+    </ul>
+    <p class="en">Following termination, Novik Nexus will retain User Content for a maximum of <strong>30 calendar days</strong>, after which it may be permanently deleted. During this period the User may request an export of their data.</p>
+    <p class="es"><strong>Por parte del Usuario:</strong> El Usuario puede cancelar su suscripción en cualquier momento desde el panel de administración o contactando con <a href="mailto:info@noviknexus.com">info@noviknexus.com</a>. La cancelación surtirá efecto al final del período de facturación en curso, sin derecho a reembolso proporcional salvo que la legislación aplicable disponga lo contrario.</p>
+    <p class="es"><strong>Por parte de Novik Nexus:</strong> Novik Nexus podrá suspender o cancelar el acceso, con o sin previo aviso según la gravedad, en los siguientes supuestos:</p>
+    <ul class="es">
+      <li>Incumplimiento de los presentes Términos.</li>
+      <li>Impago de las cuotas de suscripción.</li>
+      <li>Uso del Servicio para actividades ilegales o fraudulentas.</li>
+      <li>Riesgo para la seguridad o integridad de la Plataforma.</li>
+    </ul>
+    <p class="es">Tras la cancelación, Novik Nexus conservará el Contenido del Usuario durante un máximo de <strong>30 días naturales</strong>, transcurridos los cuales podrá eliminarlo definitivamente. Durante ese período el Usuario podrá solicitar la exportación de sus datos.</p>
+  </section>
+
+  <!-- ══ S11 ══ -->
+  <section id="s11">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <h2 class="en">Amendments</h2>
+      <h2 class="es">Modificación de los Términos</h2>
+    </div>
+    <p class="en">Novik Nexus reserves the right to amend these Terms at any time. In the event of material changes, the User will be notified with at least <strong>15 calendar days'</strong> advance notice by email or via a prominent notice on the Platform. Continued use of the Service after the new Terms take effect constitutes acceptance of those Terms. If the User does not accept the changes, they must cease using the Service and cancel their subscription before the effective date.</p>
+    <p class="es">Novik Nexus se reserva el derecho de modificar los presentes Términos en cualquier momento. En caso de modificaciones sustanciales, el Usuario será notificado con un mínimo de <strong>15 días naturales</strong> de antelación por correo electrónico o mediante aviso destacado en la Plataforma. La continuación del uso del Servicio tras la entrada en vigor de los nuevos Términos implicará su aceptación. Si el Usuario no los acepta, deberá cesar en el uso del Servicio y cancelar su suscripción antes de la fecha de entrada en vigor.</p>
+  </section>
+
+  <!-- ══ S12 ══ -->
+  <section id="s12">
+    <div class="section-header">
+      <span class="section-num">12</span>
+      <h2 class="en">Governing law and jurisdiction</h2>
+      <h2 class="es">Ley aplicable y jurisdicción</h2>
+    </div>
+    <p class="en">These Terms shall be governed by and construed in accordance with Spanish law, without prejudice to any conflict-of-law provisions that may apply or to the non-waivable rights of consumers under the law of their country of residence. For the resolution of any dispute, the parties submit to the <strong>Courts and Tribunals of Murcia (Spain)</strong>, unless applicable consumer protection law requires a different jurisdiction.</p>
+    <div class="info-box en b">
+      <span class="box-label">Online dispute resolution (EU)</span>
+      EU consumers may access the European Commission's online dispute resolution platform at: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>
+    </div>
+    <p class="es">Los presentes Términos se rigen e interpretan de conformidad con la legislación española, sin perjuicio de las normas de conflicto de leyes que pudieran resultar aplicables ni de los derechos irrenunciables reconocidos al consumidor por la normativa de su país de residencia. Para la resolución de cualquier controversia, las partes se someten a los <strong>Juzgados y Tribunales de Murcia (España)</strong>, salvo que la normativa de protección de consumidores imponga un fuero diferente.</p>
+    <div class="info-box es b">
+      <span class="box-label">Resolución extrajudicial de conflictos (UE)</span>
+      Los consumidores de la UE pueden acceder a la plataforma de resolución de litigios en línea de la Comisión Europea en: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>
+    </div>
+  </section>
+
+  <!-- ══ S13 ══ -->
+  <section id="s13">
+    <div class="section-header">
+      <span class="section-num">13</span>
+      <h2 class="en">Contact</h2>
+      <h2 class="es">Contacto</h2>
+    </div>
+    <p class="en">For any query, complaint or communication relating to these Terms:</p>
+    <p class="es">Para cualquier consulta, reclamación o comunicación relacionada con los presentes Términos:</p>
+    <div class="contact-card">
+      <div class="contact-row">
+        <span class="contact-label en">Company</span><span class="contact-label es">Razón social</span>
+        <span class="contact-val">Novik Nexus, S.L.</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label en">Address</span><span class="contact-label es">Dirección</span>
+        <span class="contact-val">C/ De la Cruz, 2 Entlo., 30820 Alcantarilla, Murcia (Spain)</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label en">Phone</span><span class="contact-label es">Teléfono</span>
+        <span class="contact-val"><a href="tel:+34690957910">+34 690 957 910</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <span class="contact-val"><a href="mailto:info@noviknexus.com">info@noviknexus.com</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label en">Hours</span><span class="contact-label es">Horario</span>
+        <span class="contact-val en">Monday to Friday, 9:00 – 18:00 (CET/CEST)</span>
+        <span class="contact-val es">Lunes a viernes, 9:00 – 18:00 (CET/CEST)</span>
+      </div>
+    </div>
+    <p class="en" style="margin-top:1.1rem;">Novik Nexus undertakes to respond within no more than <strong>5 business days</strong>.</p>
+    <p class="es" style="margin-top:1.1rem;">Novik Nexus se compromete a responder en un plazo no superior a <strong>5 días hábiles</strong>.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <footer>
+    <span class="footer-brand">Novik Nexus, S.L. · B24836553</span>
+    <span class="footer-note en">© 2025 Novik Nexus, S.L. All rights reserved.<br/>Version 1.0 · Effective April 7, 2025</span>
+    <span class="footer-note es">© 2025 Novik Nexus, S.L. Todos los derechos reservados.<br/>Versión 1.0 · Vigente desde el 7 de abril de 2025</span>
+  </footer>
+
+</div>
+
+<script>
+  function setLang(lang) {
+    document.getElementById('html-root').setAttribute('lang', lang);
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.title = lang === 'en'
+      ? 'Terms of Use — Novik Nexus'
+      : 'Términos de Uso — Novik Nexus';
+  }
+  document.addEventListener('DOMContentLoaded', () => setLang('en'));
+</script>
+</body>
+</html>

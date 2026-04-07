@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy / Política de Privacidad — Novik Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:            #0a0808;
+      --surface:       #120d0d;
+      --surface-2:     #1a1212;
+      --border:        #281818;
+      --border-light:  #38201f;
+      --text-primary:  #f0e8e8;
+      --text-secondary:#a08888;
+      --text-muted:    #6a4848;
+      --accent:        #92164f;
+      --accent-bright: #b01d60;
+      --accent-glow:   rgba(146,22,79,0.20);
+      --accent-dim:    rgba(146,22,79,0.10);
+      --highlight:     #d4607a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'DM Serif Display', Georgia, serif;
+      min-height: 100vh;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 52px 52px;
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: -25vh; left: 50%;
+      transform: translateX(-50%);
+      width: 75vw; height: 65vh;
+      background: radial-gradient(ellipse, rgba(146,22,79,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 7rem;
+    }
+
+    .top-line {
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-bright) 55%, transparent 100%);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 300;
+    }
+
+    /* ── Language switcher ── */
+    .lang-bar {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: flex-end;
+      padding: 0.8rem 0;
+      background: linear-gradient(to bottom, var(--bg) 65%, transparent);
+    }
+
+    .lang-toggle {
+      display: flex;
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      overflow: hidden;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+    }
+
+    .lang-btn {
+      padding: 0.38rem 1rem;
+      cursor: pointer;
+      background: var(--surface);
+      color: var(--text-muted);
+      border: none;
+      font-family: inherit;
+      font-size: inherit;
+      letter-spacing: inherit;
+      text-transform: uppercase;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .lang-btn.active { background: var(--accent); color: #fff; }
+    .lang-btn:hover:not(.active) { background: var(--surface-2); color: var(--text-secondary); }
+
+    /* ── Language visibility ── */
+    .es, .en { display: none; }
+    html[lang="en"] .en { display: revert; }
+    html[lang="es"] .es { display: revert; }
+    html[lang="en"] .en.b { display: block; }
+    html[lang="es"] .es.b { display: block; }
+
+    /* ── Header ── */
+    header {
+      padding: 3rem 0 2.8rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .logo-img { height: 46px; width: auto; display: block; }
+
+    .logo-sep {
+      margin-left: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.63rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 0.9rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      font-family: 'DM Serif Display', serif;
+      color: var(--highlight);
+    }
+
+    .meta-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
+
+    .badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      padding: 0.26rem 0.65rem;
+      border-radius: 4px;
+    }
+
+    .badge b { color: var(--accent-bright); font-weight: 400; }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .toc-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.59rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 2.2rem;
+    }
+
+    @media (max-width: 560px) { .toc ol { grid-template-columns: 1fr; } }
+
+    .toc li { counter-increment: toc; display: flex; gap: 0.55rem; align-items: baseline; }
+
+    .toc li::before {
+      content: counter(toc, decimal-leading-zero);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.59rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .toc a {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+
+    .toc a:hover { color: var(--highlight); }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 3.25rem;
+      scroll-margin-top: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.45s ease forwards;
+    }
+
+    section:nth-child(1)  { animation-delay:.05s }
+    section:nth-child(2)  { animation-delay:.09s }
+    section:nth-child(3)  { animation-delay:.13s }
+    section:nth-child(4)  { animation-delay:.17s }
+    section:nth-child(5)  { animation-delay:.21s }
+    section:nth-child(6)  { animation-delay:.25s }
+    section:nth-child(7)  { animation-delay:.29s }
+    section:nth-child(8)  { animation-delay:.33s }
+    section:nth-child(9)  { animation-delay:.37s }
+    section:nth-child(10) { animation-delay:.41s }
+    section:nth-child(11) { animation-delay:.45s }
+    section:nth-child(12) { animation-delay:.49s }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(12px) }
+      to   { opacity:1; transform:translateY(0) }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      margin-bottom: 1.15rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.59rem;
+      color: var(--accent-bright);
+      background: var(--accent-dim);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      padding: 0.2rem 0.48rem;
+      margin-top: 0.32rem;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.08rem;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    p {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.9rem;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul { padding-left: 1.3rem; margin-bottom: 0.9rem; }
+
+    li { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 0.38rem; }
+
+    strong { color: var(--text-primary); font-weight: 600; }
+
+    a { color: var(--highlight); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Data table ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.86rem;
+    }
+
+    .data-table th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      padding: 0.6rem 0.9rem;
+      text-align: left;
+    }
+
+    .data-table td {
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      padding: 0.65rem 0.9rem;
+      vertical-align: top;
+    }
+
+    .data-table tr:nth-child(even) td { background: var(--surface); }
+
+    /* ── Info / Warning boxes ── */
+    .info-box {
+      background: var(--accent-dim);
+      border: 1px solid var(--border-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 0.95rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    .box-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.57rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--highlight);
+      display: block;
+      margin-bottom: 0.32rem;
+    }
+
+    .warn-box {
+      background: rgba(146,22,79,0.07);
+      border: 1px solid rgba(146,22,79,0.28);
+      border-left: 3px solid var(--accent-bright);
+      border-radius: 6px;
+      padding: 0.95rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    .warn-box .box-label { color: var(--accent-bright); }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 1.4rem 1.7rem;
+      margin-top: 1.1rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .contact-row { display: flex; gap: 0.9rem; align-items: baseline; flex-wrap: wrap; }
+
+    .contact-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      min-width: 86px;
+    }
+
+    .contact-val { font-size: 0.89rem; color: var(--text-secondary); }
+
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 3.5rem 0; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .footer-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.59rem;
+      color: var(--text-muted);
+      text-align: right;
+      line-height: 1.65;
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-line"></div>
+
+<div class="wrapper">
+
+  <div class="lang-bar">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn"        id="btn-es" onclick="setLang('es')">ES</button>
+    </div>
+  </div>
+
+  <!-- ══ HEADER ══ -->
+  <header>
+    <div class="logo-row">
+      <img class="logo-img" src="/NNLogo3.png" alt="Novik Nexus" />
+      <span class="logo-sep en">legal / privacy-policy</span>
+      <span class="logo-sep es">legal / política-de-privacidad</span>
+    </div>
+
+    <h1 class="en">Privacy <em>Policy</em></h1>
+    <h1 class="es">Política de <em>Privacidad</em></h1>
+
+    <p class="en" style="color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:0.73rem;margin-top:0.3rem;">SaaS Platform · GDPR compliant · International scope</p>
+    <p class="es" style="color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:0.73rem;margin-top:0.3rem;">Plataforma SaaS · Conforme al RGPD · Ámbito internacional</p>
+
+    <div class="meta-row">
+      <span class="badge en"><b>Version</b> 1.0</span>
+      <span class="badge es"><b>Versión</b> 1.0</span>
+      <span class="badge en"><b>Effective</b> April 7, 2025</span>
+      <span class="badge es"><b>Vigente desde</b> 7 de abril de 2025</span>
+      <span class="badge en"><b>Regulation</b> GDPR (EU) 2016/679</span>
+      <span class="badge es"><b>Normativa</b> RGPD (UE) 2016/679</span>
+      <span class="badge en"><b>DPO contact</b> info@noviknexus.com</span>
+      <span class="badge es"><b>Contacto DPD</b> info@noviknexus.com</span>
+    </div>
+  </header>
+
+  <!-- ── Intro notice ── -->
+  <div class="info-box en b">
+    <span class="box-label">Your privacy matters</span>
+    At Novik Nexus we are committed to protecting your personal data. This Privacy Policy explains who we are, what data we collect, why we collect it, how we use it, and what rights you have. Please read it carefully before using our Service.
+  </div>
+  <div class="info-box es b">
+    <span class="box-label">Tu privacidad importa</span>
+    En Novik Nexus estamos comprometidos con la protección de tus datos personales. Esta Política de Privacidad explica quiénes somos, qué datos recopilamos, por qué los recopilamos, cómo los utilizamos y qué derechos tienes. Te rogamos que la leas detenidamente antes de utilizar nuestro Servicio.
+  </div>
+
+  <!-- ══ TOC EN ══ -->
+  <nav class="toc en b" aria-label="Table of contents">
+    <p class="toc-label">Table of Contents</p>
+    <ol>
+      <li><a href="#p1">Data controller</a></li>
+      <li><a href="#p2">Data we collect</a></li>
+      <li><a href="#p3">Purposes and legal basis</a></li>
+      <li><a href="#p4">Data retention</a></li>
+      <li><a href="#p5">Recipients and transfers</a></li>
+      <li><a href="#p6">International transfers</a></li>
+      <li><a href="#p7">Your rights</a></li>
+      <li><a href="#p8">Cookies</a></li>
+      <li><a href="#p9">Children's privacy</a></li>
+      <li><a href="#p10">Security</a></li>
+      <li><a href="#p11">Changes to this policy</a></li>
+      <li><a href="#p12">Contact and complaints</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══ TOC ES ══ -->
+  <nav class="toc es b" aria-label="Índice">
+    <p class="toc-label">Índice de contenidos</p>
+    <ol>
+      <li><a href="#p1">Responsable del tratamiento</a></li>
+      <li><a href="#p2">Datos que recopilamos</a></li>
+      <li><a href="#p3">Finalidades y base jurídica</a></li>
+      <li><a href="#p4">Conservación de los datos</a></li>
+      <li><a href="#p5">Destinatarios y transferencias</a></li>
+      <li><a href="#p6">Transferencias internacionales</a></li>
+      <li><a href="#p7">Tus derechos</a></li>
+      <li><a href="#p8">Cookies</a></li>
+      <li><a href="#p9">Menores de edad</a></li>
+      <li><a href="#p10">Seguridad</a></li>
+      <li><a href="#p11">Cambios en esta política</a></li>
+      <li><a href="#p12">Contacto y reclamaciones</a></li>
+    </ol>
+  </nav>
+
+  <!-- ══ P1 — Controller ══ -->
+  <section id="p1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="en">Data controller</h2>
+      <h2 class="es">Responsable del tratamiento</h2>
+    </div>
+    <p class="en">The entity responsible for processing your personal data is:</p>
+    <p class="es">La entidad responsable del tratamiento de tus datos personales es:</p>
+    <div class="contact-card">
+      <div class="contact-row">
+        <span class="contact-label en">Company</span><span class="contact-label es">Razón social</span>
+        <span class="contact-val">Novik Nexus, S.L.</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label en">VAT No.</span><span class="contact-label es">NIF</span>
+        <span class="contact-val">B24836553</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label en">Address</span><span class="contact-label es">Domicilio</span>
+        <span class="contact-val">C/ De la Cruz, 2 Entlo., 30820 Alcantarilla, Murcia (Spain)</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label en">Phone</span><span class="contact-label es">Teléfono</span>
+        <span class="contact-val"><a href="tel:+34690957910">+34 690 957 910</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <span class="contact-val"><a href="mailto:info@noviknexus.com">info@noviknexus.com</a></span>
+      </div>
+    </div>
+    <p class="en" style="margin-top:1rem;">Novik Nexus has not appointed a formal Data Protection Officer (DPO) as it does not currently meet the thresholds requiring mandatory appointment under Article 37 GDPR. All data protection enquiries should be directed to <a href="mailto:info@noviknexus.com">info@noviknexus.com</a>.</p>
+    <p class="es" style="margin-top:1rem;">Novik Nexus no ha designado un Delegado de Protección de Datos (DPD) formal, ya que actualmente no concurren los supuestos de nombramiento obligatorio previstos en el artículo 37 del RGPD. Cualquier consulta en materia de protección de datos debe dirigirse a <a href="mailto:info@noviknexus.com">info@noviknexus.com</a>.</p>
+  </section>
+
+  <!-- ══ P2 — Data collected ══ -->
+  <section id="p2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="en">Data we collect</h2>
+      <h2 class="es">Datos que recopilamos</h2>
+    </div>
+    <p class="en">Depending on how you interact with Novik Nexus, we may collect the following categories of personal data:</p>
+    <p class="es">Dependiendo de cómo interactúes con Novik Nexus, podemos recopilar las siguientes categorías de datos personales:</p>
+
+    <table class="data-table en">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Examples</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Identity data</strong></td>
+          <td>Full name, username, job title</td>
+          <td>Provided by you</td>
+        </tr>
+        <tr>
+          <td><strong>Contact data</strong></td>
+          <td>Email address, phone number, billing address</td>
+          <td>Provided by you</td>
+        </tr>
+        <tr>
+          <td><strong>Account data</strong></td>
+          <td>Login credentials (hashed), subscription plan, account settings</td>
+          <td>Generated on registration</td>
+        </tr>
+        <tr>
+          <td><strong>Payment data</strong></td>
+          <td>Billing details, transaction references (card data processed by our payment provider)</td>
+          <td>Provided by you / payment provider</td>
+        </tr>
+        <tr>
+          <td><strong>Usage data</strong></td>
+          <td>Features used, session duration, actions performed, error logs</td>
+          <td>Automatically collected</td>
+        </tr>
+        <tr>
+          <td><strong>Technical data</strong></td>
+          <td>IP address, browser type, device identifiers, time zone</td>
+          <td>Automatically collected</td>
+        </tr>
+        <tr>
+          <td><strong>Communications data</strong></td>
+          <td>Support tickets, emails, chat messages sent to us</td>
+          <td>Provided by you</td>
+        </tr>
+        <tr>
+          <td><strong>Marketing data</strong></td>
+          <td>Communication preferences, marketing consent records</td>
+          <td>Provided by you</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="data-table es">
+      <thead>
+        <tr>
+          <th>Categoría</th>
+          <th>Ejemplos</th>
+          <th>Fuente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Datos de identidad</strong></td>
+          <td>Nombre completo, nombre de usuario, cargo</td>
+          <td>Proporcionados por ti</td>
+        </tr>
+        <tr>
+          <td><strong>Datos de contacto</strong></td>
+          <td>Dirección de correo electrónico, teléfono, dirección de facturación</td>
+          <td>Proporcionados por ti</td>
+        </tr>
+        <tr>
+          <td><strong>Datos de cuenta</strong></td>
+          <td>Credenciales de acceso (cifradas), plan de suscripción, configuración de cuenta</td>
+          <td>Generados en el registro</td>
+        </tr>
+        <tr>
+          <td><strong>Datos de pago</strong></td>
+          <td>Datos de facturación, referencias de transacción (datos de tarjeta procesados por nuestro proveedor de pago)</td>
+          <td>Proporcionados por ti / proveedor de pago</td>
+        </tr>
+        <tr>
+          <td><strong>Datos de uso</strong></td>
+          <td>Funcionalidades utilizadas, duración de sesión, acciones realizadas, registros de error</td>
+          <td>Recopilados automáticamente</td>
+        </tr>
+        <tr>
+          <td><strong>Datos técnicos</strong></td>
+          <td>Dirección IP, tipo de navegador, identificadores de dispositivo, zona horaria</td>
+          <td>Recopilados automáticamente</td>
+        </tr>
+        <tr>
+          <td><strong>Datos de comunicaciones</strong></td>
+          <td>Tickets de soporte, correos electrónicos, mensajes de chat enviados a nosotros</td>
+          <td>Proporcionados por ti</td>
+        </tr>
+        <tr>
+          <td><strong>Datos de marketing</strong></td>
+          <td>Preferencias de comunicación, registros de consentimiento de marketing</td>
+          <td>Proporcionados por ti</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warn-box en b">
+      <span class="box-label">Special categories</span>
+      We do not intentionally collect special category data (health, racial or ethnic origin, political opinions, religious beliefs, biometric data, etc.). Please do not submit such data through our Service.
+    </div>
+    <div class="warn-box es b">
+      <span class="box-label">Categorías especiales</span>
+      No recopilamos intencionalmente datos de categorías especiales (salud, origen racial o étnico, opiniones políticas, creencias religiosas, datos biométricos, etc.). Por favor, no envíes datos de este tipo a través de nuestro Servicio.
+    </div>
+  </section>
+
+  <!-- ══ P3 — Purposes & legal basis ══ -->
+  <section id="p3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="en">Purposes and legal basis</h2>
+      <h2 class="es">Finalidades y base jurídica del tratamiento</h2>
+    </div>
+    <p class="en">We process your personal data only when we have a valid legal basis under Article 6 GDPR:</p>
+    <p class="es">Tratamos tus datos personales únicamente cuando disponemos de una base jurídica válida conforme al artículo 6 del RGPD:</p>
+
+    <table class="data-table en">
+      <thead>
+        <tr><th>Purpose</th><th>Legal basis</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Provision and management of the Service (account creation, authentication, subscription management)</td>
+          <td>Performance of a contract (Art. 6.1.b)</td>
+        </tr>
+        <tr>
+          <td>Billing, invoicing and payment processing</td>
+          <td>Performance of a contract (Art. 6.1.b)</td>
+        </tr>
+        <tr>
+          <td>Customer support and responding to enquiries</td>
+          <td>Performance of a contract / Legitimate interest (Art. 6.1.b / 6.1.f)</td>
+        </tr>
+        <tr>
+          <td>Service improvement, analytics and bug fixing</td>
+          <td>Legitimate interest (Art. 6.1.f)</td>
+        </tr>
+        <tr>
+          <td>Security, fraud prevention and abuse detection</td>
+          <td>Legitimate interest (Art. 6.1.f)</td>
+        </tr>
+        <tr>
+          <td>Sending product updates and transactional communications</td>
+          <td>Performance of a contract (Art. 6.1.b)</td>
+        </tr>
+        <tr>
+          <td>Marketing and promotional communications</td>
+          <td>Consent (Art. 6.1.a) — you may withdraw at any time</td>
+        </tr>
+        <tr>
+          <td>Compliance with legal obligations (tax records, audit trails)</td>
+          <td>Legal obligation (Art. 6.1.c)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="data-table es">
+      <thead>
+        <tr><th>Finalidad</th><th>Base jurídica</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Prestación y gestión del Servicio (creación de cuenta, autenticación, gestión de suscripción)</td>
+          <td>Ejecución de un contrato (art. 6.1.b)</td>
+        </tr>
+        <tr>
+          <td>Facturación y procesamiento de pagos</td>
+          <td>Ejecución de un contrato (art. 6.1.b)</td>
+        </tr>
+        <tr>
+          <td>Atención al cliente y respuesta a consultas</td>
+          <td>Ejecución de un contrato / Interés legítimo (art. 6.1.b / 6.1.f)</td>
+        </tr>
+        <tr>
+          <td>Mejora del Servicio, análisis y corrección de errores</td>
+          <td>Interés legítimo (art. 6.1.f)</td>
+        </tr>
+        <tr>
+          <td>Seguridad, prevención del fraude y detección de abusos</td>
+          <td>Interés legítimo (art. 6.1.f)</td>
+        </tr>
+        <tr>
+          <td>Envío de actualizaciones del producto y comunicaciones transaccionales</td>
+          <td>Ejecución de un contrato (art. 6.1.b)</td>
+        </tr>
+        <tr>
+          <td>Comunicaciones comerciales y de marketing</td>
+          <td>Consentimiento (art. 6.1.a) — revocable en cualquier momento</td>
+        </tr>
+        <tr>
+          <td>Cumplimiento de obligaciones legales (registros fiscales, trazabilidad de auditoría)</td>
+          <td>Obligación legal (art. 6.1.c)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══ P4 — Retention ══ -->
+  <section id="p4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="en">Data retention</h2>
+      <h2 class="es">Conservación de los datos</h2>
+    </div>
+    <p class="en">We retain personal data only for as long as necessary to fulfil the purposes for which it was collected, or as required by law. Key retention periods are:</p>
+    <p class="es">Conservamos los datos personales únicamente durante el tiempo necesario para cumplir los fines para los que fueron recopilados, o durante el tiempo exigido por la ley. Los plazos de conservación principales son:</p>
+
+    <table class="data-table en">
+      <thead><tr><th>Data category</th><th>Retention period</th></tr></thead>
+      <tbody>
+        <tr><td>Account and identity data</td><td>Duration of the contract + 5 years</td></tr>
+        <tr><td>Billing and transaction records</td><td>10 years (Spanish tax law)</td></tr>
+        <tr><td>Support communications</td><td>3 years from last interaction</td></tr>
+        <tr><td>Usage and technical logs</td><td>12 months from collection</td></tr>
+        <tr><td>Marketing consent records</td><td>Until consent withdrawn + 3 years</td></tr>
+        <tr><td>User Content (post-cancellation)</td><td>30 days, then permanently deleted</td></tr>
+      </tbody>
+    </table>
+
+    <table class="data-table es">
+      <thead><tr><th>Categoría de datos</th><th>Plazo de conservación</th></tr></thead>
+      <tbody>
+        <tr><td>Datos de cuenta e identidad</td><td>Duración del contrato + 5 años</td></tr>
+        <tr><td>Registros de facturación y transacciones</td><td>10 años (legislación tributaria española)</td></tr>
+        <tr><td>Comunicaciones de soporte</td><td>3 años desde la última interacción</td></tr>
+        <tr><td>Registros de uso y técnicos</td><td>12 meses desde su recopilación</td></tr>
+        <tr><td>Registros de consentimiento de marketing</td><td>Hasta la retirada del consentimiento + 3 años</td></tr>
+        <tr><td>Contenido del usuario (tras cancelación)</td><td>30 días, luego eliminación definitiva</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══ P5 — Recipients ══ -->
+  <section id="p5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="en">Recipients and data sharing</h2>
+      <h2 class="es">Destinatarios y comunicación de datos</h2>
+    </div>
+    <p class="en">We do not sell your personal data. We may share it with the following categories of recipients, strictly to the extent necessary:</p>
+    <p class="es">No vendemos tus datos personales. Podemos compartirlos con las siguientes categorías de destinatarios, estrictamente en la medida necesaria:</p>
+    <ul class="en">
+      <li><strong>Cloud infrastructure providers</strong> — to host and operate the Service (acting as data processors under a DPA).</li>
+      <li><strong>Payment processors</strong> — to handle subscription billing securely.</li>
+      <li><strong>Analytics and monitoring tools</strong> — to measure Service performance and detect issues.</li>
+      <li><strong>Customer support platforms</strong> — to manage support tickets and communications.</li>
+      <li><strong>Email service providers</strong> — to send transactional and marketing communications.</li>
+      <li><strong>Legal and regulatory authorities</strong> — when required by applicable law, court order or to protect our legal rights.</li>
+    </ul>
+    <ul class="es">
+      <li><strong>Proveedores de infraestructura en la nube</strong> — para alojar y operar el Servicio (actuando como encargados del tratamiento bajo un DPA).</li>
+      <li><strong>Procesadores de pago</strong> — para gestionar la facturación de suscripciones de forma segura.</li>
+      <li><strong>Herramientas de analítica y monitorización</strong> — para medir el rendimiento del Servicio y detectar incidencias.</li>
+      <li><strong>Plataformas de atención al cliente</strong> — para gestionar tickets de soporte y comunicaciones.</li>
+      <li><strong>Proveedores de servicios de correo electrónico</strong> — para enviar comunicaciones transaccionales y de marketing.</li>
+      <li><strong>Autoridades legales y regulatorias</strong> — cuando lo exija la ley aplicable, una resolución judicial o sea necesario para proteger nuestros derechos legales.</li>
+    </ul>
+    <p class="en">All third-party processors are bound by data processing agreements ensuring an equivalent level of protection to that provided by this Policy.</p>
+    <p class="es">Todos los encargados del tratamiento están vinculados por acuerdos de encargo de tratamiento que garantizan un nivel de protección equivalente al establecido en esta Política.</p>
+  </section>
+
+  <!-- ══ P6 — International transfers ══ -->
+  <section id="p6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="en">International data transfers</h2>
+      <h2 class="es">Transferencias internacionales de datos</h2>
+    </div>
+    <p class="en">Some of our third-party service providers are located outside the European Economic Area (EEA). Where we transfer personal data to countries not recognised by the European Commission as providing an adequate level of protection, we ensure appropriate safeguards are in place, including:</p>
+    <ul class="en">
+      <li>Standard Contractual Clauses (SCCs) approved by the European Commission.</li>
+      <li>Binding Corporate Rules, where applicable.</li>
+      <li>Other recognised transfer mechanisms under Chapter V of the GDPR.</li>
+    </ul>
+    <p class="en">You may request a copy of the applicable transfer mechanism by contacting us at <a href="mailto:info@noviknexus.com">info@noviknexus.com</a>.</p>
+
+    <p class="es">Algunos de nuestros proveedores de servicios se encuentran fuera del Espacio Económico Europeo (EEE). Cuando transferimos datos personales a países que no han sido reconocidos por la Comisión Europea como garantes de un nivel de protección adecuado, nos aseguramos de contar con las garantías apropiadas, incluyendo:</p>
+    <ul class="es">
+      <li>Cláusulas Contractuales Tipo (CCT) aprobadas por la Comisión Europea.</li>
+      <li>Normas Corporativas Vinculantes, en su caso.</li>
+      <li>Otros mecanismos de transferencia reconocidos en el Capítulo V del RGPD.</li>
+    </ul>
+    <p class="es">Puedes solicitar una copia del mecanismo de transferencia aplicable contactando con nosotros en <a href="mailto:info@noviknexus.com">info@noviknexus.com</a>.</p>
+  </section>
+
+  <!-- ══ P7 — Rights ══ -->
+  <section id="p7">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="en">Your rights</h2>
+      <h2 class="es">Tus derechos</h2>
+    </div>
+    <p class="en">Under the GDPR and applicable Spanish law, you have the following rights regarding your personal data:</p>
+    <p class="es">En virtud del RGPD y la legislación española aplicable, tienes los siguientes derechos respecto a tus datos personales:</p>
+
+    <table class="data-table en">
+      <thead><tr><th>Right</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Access</strong> (Art. 15)</td><td>Obtain confirmation of whether we process your data and receive a copy of it.</td></tr>
+        <tr><td><strong>Rectification</strong> (Art. 16)</td><td>Request correction of inaccurate or incomplete data.</td></tr>
+        <tr><td><strong>Erasure</strong> (Art. 17)</td><td>Request deletion of your data where there is no longer a legitimate reason to retain it ("right to be forgotten").</td></tr>
+        <tr><td><strong>Restriction</strong> (Art. 18)</td><td>Request that we limit processing of your data in certain circumstances.</td></tr>
+        <tr><td><strong>Portability</strong> (Art. 20)</td><td>Receive your data in a structured, machine-readable format and transfer it to another controller.</td></tr>
+        <tr><td><strong>Objection</strong> (Art. 21)</td><td>Object to processing based on legitimate interests or for direct marketing purposes.</td></tr>
+        <tr><td><strong>Withdraw consent</strong> (Art. 7.3)</td><td>Withdraw consent at any time where processing is based on consent, without affecting the lawfulness of prior processing.</td></tr>
+        <tr><td><strong>Not to be subject to automated decisions</strong> (Art. 22)</td><td>Not be subject to decisions based solely on automated processing that produce significant legal or similarly significant effects.</td></tr>
+      </tbody>
+    </table>
+
+    <table class="data-table es">
+      <thead><tr><th>Derecho</th><th>Qué implica</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Acceso</strong> (art. 15)</td><td>Obtener confirmación sobre si tratamos tus datos y recibir una copia de los mismos.</td></tr>
+        <tr><td><strong>Rectificación</strong> (art. 16)</td><td>Solicitar la corrección de datos inexactos o incompletos.</td></tr>
+        <tr><td><strong>Supresión</strong> (art. 17)</td><td>Solicitar la eliminación de tus datos cuando ya no exista una razón legítima para conservarlos ("derecho al olvido").</td></tr>
+        <tr><td><strong>Limitación</strong> (art. 18)</td><td>Solicitar que limitemos el tratamiento de tus datos en determinadas circunstancias.</td></tr>
+        <tr><td><strong>Portabilidad</strong> (art. 20)</td><td>Recibir tus datos en un formato estructurado y legible por máquina y transferirlos a otro responsable.</td></tr>
+        <tr><td><strong>Oposición</strong> (art. 21)</td><td>Oponerte al tratamiento basado en interés legítimo o con fines de marketing directo.</td></tr>
+        <tr><td><strong>Retirada del consentimiento</strong> (art. 7.3)</td><td>Retirar el consentimiento en cualquier momento cuando el tratamiento se base en el mismo, sin que ello afecte a la licitud del tratamiento previo.</td></tr>
+        <tr><td><strong>No ser objeto de decisiones automatizadas</strong> (art. 22)</td><td>No ser objeto de decisiones basadas únicamente en tratamiento automatizado que produzcan efectos jurídicos significativos.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="info-box en b" style="margin-top:1rem;">
+      <span class="box-label">How to exercise your rights</span>
+      Send your request to <a href="mailto:info@noviknexus.com">info@noviknexus.com</a> indicating the right you wish to exercise and attaching a copy of a valid identity document. We will respond within <strong>one month</strong> (extendable by two further months for complex requests, with notice).
+    </div>
+    <div class="info-box es b" style="margin-top:1rem;">
+      <span class="box-label">Cómo ejercer tus derechos</span>
+      Envía tu solicitud a <a href="mailto:info@noviknexus.com">info@noviknexus.com</a> indicando el derecho que deseas ejercer y adjuntando copia de un documento de identidad válido. Responderemos en el plazo de <strong>un mes</strong> (ampliable dos meses adicionales para solicitudes complejas, con notificación previa).
+    </div>
+  </section>
+
+  <!-- ══ P8 — Cookies ══ -->
+  <section id="p8">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="en">Cookies and similar technologies</h2>
+      <h2 class="es">Cookies y tecnologías similares</h2>
+    </div>
+    <p class="en">We use cookies and similar tracking technologies to operate and improve the Service. Cookies are small text files stored on your device. We use the following types:</p>
+    <ul class="en">
+      <li><strong>Strictly necessary cookies</strong> — essential for the Service to function (authentication, session management). Cannot be disabled.</li>
+      <li><strong>Functional cookies</strong> — remember your preferences (language, settings). Disabled by default; activated only with your consent.</li>
+      <li><strong>Analytical cookies</strong> — help us understand how the Service is used (aggregated, anonymised data). Require your consent.</li>
+      <li><strong>Marketing cookies</strong> — used to deliver relevant advertising. Require your explicit consent.</li>
+    </ul>
+    <p class="en">You can manage your cookie preferences at any time via the cookie banner or your browser settings. Note that disabling cookies may affect the functionality of the Service. For full details, please refer to our separate <strong>Cookie Policy</strong>.</p>
+
+    <p class="es">Utilizamos cookies y tecnologías de seguimiento similares para operar y mejorar el Servicio. Las cookies son pequeños archivos de texto almacenados en tu dispositivo. Utilizamos los siguientes tipos:</p>
+    <ul class="es">
+      <li><strong>Cookies estrictamente necesarias</strong> — imprescindibles para el funcionamiento del Servicio (autenticación, gestión de sesión). No pueden desactivarse.</li>
+      <li><strong>Cookies funcionales</strong> — recuerdan tus preferencias (idioma, configuración). Desactivadas por defecto; se activan únicamente con tu consentimiento.</li>
+      <li><strong>Cookies analíticas</strong> — nos ayudan a entender cómo se utiliza el Servicio (datos agregados y anonimizados). Requieren tu consentimiento.</li>
+      <li><strong>Cookies de marketing</strong> — se utilizan para mostrar publicidad relevante. Requieren tu consentimiento explícito.</li>
+    </ul>
+    <p class="es">Puedes gestionar tus preferencias de cookies en cualquier momento a través del banner de cookies o la configuración de tu navegador. Ten en cuenta que desactivar las cookies puede afectar a la funcionalidad del Servicio. Para más detalles, consulta nuestra <strong>Política de Cookies</strong>.</p>
+  </section>
+
+  <!-- ══ P9 — Children ══ -->
+  <section id="p9">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2 class="en">Children's privacy</h2>
+      <h2 class="es">Menores de edad</h2>
+    </div>
+    <p class="en">The Service is not directed at children under the age of 16. We do not knowingly collect personal data from anyone under 16 without verified parental or guardian consent. If we become aware that we have inadvertently collected such data, we will delete it promptly. If you believe a child under 16 has provided us with their personal data, please contact us at <a href="mailto:info@noviknexus.com">info@noviknexus.com</a>.</p>
+    <p class="es">El Servicio no está dirigido a menores de 16 años. No recopilamos intencionalmente datos personales de menores de 16 años sin consentimiento verificable de sus padres o tutores. Si detectamos que hemos recopilado inadvertidamente datos de un menor, los eliminaremos sin demora. Si crees que un menor de 16 años nos ha facilitado sus datos personales, contáctanos en <a href="mailto:info@noviknexus.com">info@noviknexus.com</a>.</p>
+  </section>
+
+  <!-- ══ P10 — Security ══ -->
+  <section id="p10">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2 class="en">Security</h2>
+      <h2 class="es">Seguridad</h2>
+    </div>
+    <p class="en">We implement appropriate technical and organisational measures to protect your personal data against unauthorised access, disclosure, alteration or destruction. These measures include, among others:</p>
+    <ul class="en">
+      <li>Encryption of data in transit (TLS/HTTPS) and at rest.</li>
+      <li>Access controls and role-based permissions.</li>
+      <li>Regular security assessments and vulnerability monitoring.</li>
+      <li>Data processing agreements with all sub-processors.</li>
+      <li>Internal data protection training for staff handling personal data.</li>
+    </ul>
+    <p class="en">No method of transmission over the internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your data, we cannot guarantee absolute security.</p>
+    <div class="info-box en b">
+      <span class="box-label">Data breach notification</span>
+      In the event of a personal data breach that is likely to result in a risk to your rights and freedoms, we will notify the competent supervisory authority within 72 hours and, where required, inform affected individuals without undue delay.
+    </div>
+
+    <p class="es">Aplicamos medidas técnicas y organizativas apropiadas para proteger tus datos personales frente a accesos, divulgaciones, alteraciones o destrucciones no autorizados. Estas medidas incluyen, entre otras:</p>
+    <ul class="es">
+      <li>Cifrado de los datos en tránsito (TLS/HTTPS) y en reposo.</li>
+      <li>Controles de acceso y permisos basados en roles.</li>
+      <li>Evaluaciones de seguridad periódicas y monitorización de vulnerabilidades.</li>
+      <li>Acuerdos de encargo de tratamiento con todos los subencargados.</li>
+      <li>Formación interna en protección de datos para el personal que maneja datos personales.</li>
+    </ul>
+    <p class="es">Ningún método de transmisión por internet o almacenamiento electrónico es 100% seguro. Si bien nos esforzamos por utilizar medios comercialmente aceptables para proteger tus datos, no podemos garantizar una seguridad absoluta.</p>
+    <div class="info-box es b">
+      <span class="box-label">Notificación de brechas de seguridad</span>
+      En caso de una brecha de seguridad de datos personales que pueda suponer un riesgo para tus derechos y libertades, notificaremos a la autoridad de control competente en un plazo de 72 horas y, cuando sea necesario, informaremos a los afectados sin dilación indebida.
+    </div>
+  </section>
+
+  <!-- ══ P11 — Changes ══ -->
+  <section id="p11">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <h2 class="en">Changes to this policy</h2>
+      <h2 class="es">Cambios en esta política</h2>
+    </div>
+    <p class="en">We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements or other factors. When we make material changes, we will notify you by email or via a prominent notice on the Platform at least <strong>15 calendar days</strong> before the changes take effect. The date of the most recent update is shown at the top of this document. We encourage you to review this Policy periodically.</p>
+    <p class="es">Podemos actualizar esta Política de Privacidad periódicamente para reflejar cambios en nuestras prácticas, tecnología, requisitos legales u otros factores. Cuando realicemos cambios sustanciales, te notificaremos por correo electrónico o mediante un aviso destacado en la Plataforma con al menos <strong>15 días naturales</strong> de antelación a la entrada en vigor. La fecha de la última actualización figura al comienzo de este documento. Te recomendamos que revises esta Política periódicamente.</p>
+  </section>
+
+  <!-- ══ P12 — Contact & complaints ══ -->
+  <section id="p12">
+    <div class="section-header">
+      <span class="section-num">12</span>
+      <h2 class="en">Contact and complaints</h2>
+      <h2 class="es">Contacto y reclamaciones</h2>
+    </div>
+    <p class="en">For any questions, requests or concerns about this Privacy Policy or the processing of your personal data, please contact us:</p>
+    <p class="es">Para cualquier pregunta, solicitud o inquietud sobre esta Política de Privacidad o el tratamiento de tus datos personales, puedes contactarnos:</p>
+
+    <div class="contact-card">
+      <div class="contact-row">
+        <span class="contact-label en">Company</span><span class="contact-label es">Razón social</span>
+        <span class="contact-val">Novik Nexus, S.L.</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label en">Address</span><span class="contact-label es">Dirección</span>
+        <span class="contact-val">C/ De la Cruz, 2 Entlo., 30820 Alcantarilla, Murcia (Spain)</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label en">Phone</span><span class="contact-label es">Teléfono</span>
+        <span class="contact-val"><a href="tel:+34690957910">+34 690 957 910</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <span class="contact-val"><a href="mailto:info@noviknexus.com">info@noviknexus.com</a></span>
+      </div>
+    </div>
+
+    <p class="en" style="margin-top:1.2rem;">If you are not satisfied with our response, you have the right to lodge a complaint with the competent data protection supervisory authority. In Spain, this is the <strong>Agencia Española de Protección de Datos (AEPD)</strong>:</p>
+    <div class="info-box en b">
+      <span class="box-label">Supervisory authority — Spain</span>
+      Agencia Española de Protección de Datos (AEPD)<br/>
+      C/ Jorge Juan, 6 · 28001 Madrid<br/>
+      <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a> · <a href="tel:+34901100099">+34 901 100 099</a>
+    </div>
+    <p class="en">If you are located in another EU/EEA member state, you may also lodge a complaint with the supervisory authority in your country of habitual residence or place of work.</p>
+
+    <p class="es" style="margin-top:1.2rem;">Si no estás satisfecho con nuestra respuesta, tienes derecho a presentar una reclamación ante la autoridad de control competente en materia de protección de datos. En España, esta autoridad es la <strong>Agencia Española de Protección de Datos (AEPD)</strong>:</p>
+    <div class="info-box es b">
+      <span class="box-label">Autoridad de control — España</span>
+      Agencia Española de Protección de Datos (AEPD)<br/>
+      C/ Jorge Juan, 6 · 28001 Madrid<br/>
+      <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a> · <a href="tel:+34901100099">+34 901 100 099</a>
+    </div>
+    <p class="es">Si resides en otro Estado miembro de la UE/EEE, también puedes presentar una reclamación ante la autoridad de control de tu país de residencia habitual o de trabajo.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <footer>
+    <span class="footer-brand">Novik Nexus, S.L. · B24836553</span>
+    <span class="footer-note en">© 2025 Novik Nexus, S.L. All rights reserved.<br/>Version 1.0 · Effective April 7, 2025</span>
+    <span class="footer-note es">© 2025 Novik Nexus, S.L. Todos los derechos reservados.<br/>Versión 1.0 · Vigente desde el 7 de abril de 2025</span>
+  </footer>
+
+</div>
+
+<script>
+  function setLang(lang) {
+    document.getElementById('html-root').setAttribute('lang', lang);
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.title = lang === 'en'
+      ? 'Privacy Policy — Novik Nexus'
+      : 'Política de Privacidad — Novik Nexus';
+  }
+  document.addEventListener('DOMContentLoaded', () => setLang('en'));
+</script>
+</body>
+</html>
