@@ -18,7 +18,17 @@ export default function CookieConsent() {
       setShowBanner(true);
     } else {
       try {
-        setPreferences(JSON.parse(consent));
+        const parsed = JSON.parse(consent);
+        setPreferences(parsed);
+        // Update gtag on load if consent exists
+        if (typeof (window as any).gtag === 'function') {
+          (window as any).gtag('consent', 'update', {
+            'ad_storage': parsed.marketing ? 'granted' : 'denied',
+            'ad_user_data': parsed.marketing ? 'granted' : 'denied',
+            'ad_personalization': parsed.marketing ? 'granted' : 'denied',
+            'analytics_storage': parsed.analytics ? 'granted' : 'denied'
+          });
+        }
       } catch (e) {}
     }
   }, []);
@@ -28,7 +38,16 @@ export default function CookieConsent() {
     setPreferences(prefs);
     setShowBanner(false);
     setShowPreferences(false);
-    // Here you would typically trigger gtag or other scripts based on prefs
+    
+    // Update Google Consent Mode
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('consent', 'update', {
+        'ad_storage': prefs.marketing ? 'granted' : 'denied',
+        'ad_user_data': prefs.marketing ? 'granted' : 'denied',
+        'ad_personalization': prefs.marketing ? 'granted' : 'denied',
+        'analytics_storage': prefs.analytics ? 'granted' : 'denied'
+      });
+    }
   };
 
   const handleAcceptAll = () => {

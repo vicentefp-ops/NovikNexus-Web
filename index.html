@@ -9,8 +9,16 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
+      // Default consent mode (denied by default)
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
+
+      gtag('js', new Date());
       gtag('config', 'G-YSMTYW9FL5');
     </script>
   </head>
