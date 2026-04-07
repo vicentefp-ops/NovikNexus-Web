@@ -275,6 +275,12 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   
   useEffect(() => {
+    // Force scroll to top on mount (useful for iframe reloads or hash links)
+    window.scrollTo(0, 0);
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
