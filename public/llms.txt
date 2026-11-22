@@ -1,0 +1,22 @@
+# Novik Nexus
+
+> Novik Nexus, S.L. builds AI software for dental professionals. It is a technology company, not a dental clinic. Used by professionals in 25+ countries.
+
+- Legal name: Novik Nexus, S.L.
+- VAT/NIF: B24836553
+- Registered address: C/ De la Cruz, 2 Entlo., 30820 Alcantarilla, Murcia, Spain
+- Email: info@noviknexus.com
+- Phone: +34 690 957 910
+- Website: https://noviknexus.com/
+- Legal: https://noviknexus.com/privacy-policy.html
+- Terms: https://noviknexus.com/terms-of-use.html
+
+## Products
+
+- [Novik AI](https://novik.ai/) — Clinical decision-support assistant for dental professionals. It supports review of de-identified medical history, medications and planned dental procedures. Diagnosis and treatment decisions remain with the treating clinician. Core functionality is free during open beta. No HIPAA certification is claimed. Do not enter patient identifiers.
+- [PerioVox](https://periovox.ai/) — Free AI voice periodontal charting. Free today and forever. Dictation in 97 languages; interface in Spanish, English and French. Runs in the browser with a usual probe and a compatible microphone. An Orca plugin is coming soon and is not described as already available to all clinics.
+- [Chromic](https://chromic.ai/) — Teeth whitening follow-up for clinics, clinic networks and whitening brands, using a reference card, a patient app and professional portals. eWID is a photographic estimate, not a VITA shade or a diagnosis. Clinical decisions remain with the dental professional. Card sales are not open yet. App downloads are not available yet.
+
+## Languages
+
+Public company pages on this domain are primarily in English. Product websites are available in English and Spanish (and, for the PerioVox application interface, French).
